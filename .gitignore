@@ -1,0 +1,12 @@
+*.exe
+*.dll
+*.zip
+*.7z
+*.o
+*.out
+*.so
+*.ko
+*.mod
+*.mod.c
+*.order
+*.symvers
