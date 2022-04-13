@@ -10,3 +10,5 @@
 *.mod.c
 *.order
 *.symvers
+*.aws
+
